@@ -1,3 +1,14 @@
-1. Qual a vantagem de se usar a Computacao em Rede por meio de "camadas"
+1. Por que sistemas em rede são organizados em camadas?
 		Cada camada é suposta a abstrair implementacoes e prover tecnologias para
 	a camada acima poder usufruir
+
+2. Quais as vantagens da arquitetura "Computadores em Rede"?
+
+3. Porque a arquitetura cliente-servidor tem problemas de escalabilidade?
+
+4. Por que replicacao (Java) funciona bem quando a maioria das operações forem de leitura!
+
+5. O que voce entende pelo
+
+Implemente:
+1. Código RMI, execute e comente o código e a execuçãp. Pode ser qualquer código.
