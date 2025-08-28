@@ -8,7 +8,7 @@
 
 4. Por que replicacao (Java) funciona bem quando a maioria das operações forem de leitura!
 
-5. O que voce entende pelo
+5. O que voce entende pelo processo de reflexao (recursivo)
 
 Implemente:
 1. Código RMI, execute e comente o código e a execuçãp. Pode ser qualquer código.
