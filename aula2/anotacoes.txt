@@ -1,0 +1,10 @@
+Anotacoes aula 2 de Sistemas Distribuidos
+ 
+fisica: hub
+fisica, enlace: switch
+fisica, enlance, rede: roteador
+ 
+algoritimo do balde para tratamento do jitter
+ 
+é possivel prover assincronismo com diretivas sincronas?
+Sim! é preciso implementar seu proprio assincronismo, uma forma mais simples é somente implementando uma thread que utiliza o processo bloqueante e retorna o resultado para o processo pai.
