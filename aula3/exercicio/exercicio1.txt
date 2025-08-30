@@ -11,4 +11,4 @@
 5. O que voce entende pelo processo de reflexao (recursivo)
 
 Implemente:
-1. Código RMI, execute e comente o código e a execuçãp. Pode ser qualquer código.
+1. Código RMI, execute e comente o código e a execução. Pode ser qualquer código.
