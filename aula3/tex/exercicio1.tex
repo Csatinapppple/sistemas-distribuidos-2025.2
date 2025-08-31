@@ -77,16 +77,16 @@ de um programa.
 A vantagem é que dependendo da implementação de responsabilidade de cada computador nessa rede
 se um Computador em uma rede cai, todo o serviço não cai junto com ele.
 
-\subsection{Porque a arquitetura cliente-servidor tem problemas de escalabilidade?}
+\subsection{Por que a arquitetura cliente-servidor tem problemas de escalabilidade?}
 
 Porque, à medida que o número de clientes cresce, o servidor central vira um ponto único de sobrecarga: ele precisa processar todas as requisições, o que pode gerar lentidão, gargalos e até falhas se não houver recursos suficientes.
 
-\subsection{Por que replicação funciona bem quando a maioria das operações forem de leitura!} 
+\subsection{Por que replicação funciona bem quando a maioria das operações forem de leitura?} 
 
-Por que operações de escrita tem a complexidade relacionada a propagar os dados em todas as réplicas. Se escrever em uma das réplicas, preciso no mínimo invalidar o dado nas demais réplicas ou substituir com a nova versão da informação.
+Porque operações de escrita tem a complexidade relacionada a propagar os dados em todas as réplicas. Se escrever em uma das réplicas, preciso no mínimo invalidar o dado nas demais réplicas ou substituir com a nova versão da informação.
 
-\subsection{O que você entende pelo processo de reflexão (Java) (recursivo)} 
-O processo de reflexão consiste no processo consultando informações sobre classes e objetos em tempo de execução. Exemplo: Durante execução, chamar um método de java.lang.reflect para obter uma lista dos métodos de uma classe
+\subsection{O que você entende pelo processo de reflexão (Java)?} 
+O processo de reflexão consiste no processo consultando informações sobre classes e objetos em tempo de execução. Exemplo: Durante execução, chamar um método de \textbf{java.lang.reflect} para obter uma lista dos métodos de uma classe
 
 \section{Implementacao RMI Java}\label{sec:impl_rmi}
 
