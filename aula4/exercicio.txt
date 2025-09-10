@@ -1,0 +1,43 @@
+1) Dê exemplos de sistemas (implementacoes) onde posso ou não ter acoplamento de tempo e de espaco, Aqui eu tenho 4 possibilidades (8 exemplos ao total)
+	AT, AE:
+		Comunicacao entre Sockets TCP:
+			Se precisa saber o endereco ip e porta do destinatario e os 2 lados precisam estar online para ocorrer a comunicacao.
+		Remote Procedure Call (RPC):
+			Se chama uma funcao de um servidor que precisa retornar essa funcao para o mensageiro
+			um processo bloqueante que necessita da resposta do servidor para o cliente diretamente.
+	DT, AE:
+		Servico de Email:
+			O Mandante da mensagem precisa saber o endereco de E-mail do remetente mas os 2 não precisam estar online quando a mensagem for enviada a um intermediario que armazena os emails (Ex: Outlook)
+		Servico de Chat P2P Com armazenamento de mensagems:
+			O Mandante da mensagem precisa saber o usuario no qual vai mandar e suas mensagems
+			ficam armazenadas no servidor para que quando o remetente volte ja tenha as mensagems
+			Disponiveis.
+	AT, DE:
+		IRC (Internet Relay Chat):
+			O Mandante da Mensagem precisa somente estar na sala com o remetente mas os 2 precisam estar online ao mesmo tempo para receber a mensagem.
+		Reuniao online (Microsoft Teams):
+			Os integrantes precisam estar online na reuniao ao mesmo tempo mas não precisam saber o endereco dos integrantes.
+	DT, DE:
+		Espaco de Tuplas (JavaSpaces):
+			Se tem uma area onde pode ser colocado objetos (tuplas) que podem ser utilizadas para escrituras e leituras sem necessidade
+			dos dois terem conhecimento de si ou estarem sincronizados ao mesmo tempo.
+		Publish, Subscribe (MQTT):
+			Nao precisa se conhecer os Produtores de eventos para um broker e não precisa estar online
+			na hora que o evento for enviado para o broker se ele tiver um armazenamento de eventos
+			para despacho para os assinantes que ainda nao conectaram.
+	
+
+2) Escreva o que você entende pelo tipo de middleware e procure 3 players usados no mercado hoje em dia para cada um deles
+a) PubSub
+	Um broker recebe eventos de instrumentos externos e notifica os clientes assinantes.
+	Ex: Google Cloud Pub/Sub, Kafka e RSS
+b) Manage Queues
+	Um broker recebe mensagems para por em uma fila especifica onde produtores e consumidores
+	interagem com uma fila especifica.
+	Ex: Java Messaging Service(JMS), ZeroMQ e Apache Qpid
+c) Distributed Shared Memory
+	Computadores em cluster que agem como uma unidade de memoria unica para serem utilizadas em programas
+	Ex: Apache Ignite, Hazelcast e Infinispan
+d) Espaco de Tuplas
+	Um espaco onde clientes podem escrever objetos (Tuplas) sobre e ler também.
+	Ex: JavaSpaces, GigaSpaces e Apache River
