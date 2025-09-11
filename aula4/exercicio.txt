@@ -34,10 +34,10 @@ a) PubSub
 b) Manage Queues
 	Um broker recebe mensagems para por em uma fila especifica onde produtores e consumidores
 	interagem com uma fila especifica.
-	Ex: Java Messaging Service(JMS), ZeroMQ e Apache Qpid
+	Ex: RabbitMQ, ZeroMQ e Apache Qpid
 c) Distributed Shared Memory
 	Computadores em cluster que agem como uma unidade de memoria unica para serem utilizadas em programas
 	Ex: Apache Ignite, Hazelcast e Infinispan
 d) Espaco de Tuplas
 	Um espaco onde clientes podem escrever objetos (Tuplas) sobre e ler também.
-	Ex: JavaSpaces, GigaSpaces e Apache River
+	Ex: GigaSpaces e Apache River

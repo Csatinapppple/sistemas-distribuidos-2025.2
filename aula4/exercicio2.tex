@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}  
+
+     
+\sloppy
+
+\title{Exercício 2 Sistemas Distribuidos}
+
+\author{João Roberto Lemos Fidellis\inst{1}, Christian Aguiar Plentz\inst{2} }
+
+
+\address{Ciência da Computação - Universidade do Vale do Rio dos Sinos (UNISINOS)\\
+  Caixa Postal 275 -- 93.022-750 -- São Leopoldo -- RS -- Brazil
+\email{\{plentzchristian, jrfidellis\}@edu.unisinos.br}
+}
+
+\begin{document} 
+
+\maketitle
+
+\section{Dê exemplos de sistemas (implementações) onde posso ou não ter
+acoplamento de tempo e de  espaço, Aqui eu tenho 4 possibilidades (8 exemplos ao total)}
+\label{sec:exercicio1}
+
+\subsection{Acoplamento de Tempo, Acoplamento de Espaço}
+\textbf{Comunicação entre Sockets TCP/IP} 
+Se precisa saber o Endereço IP e a Porta Destinatária do remetente e os
+    2 lados precisam estar online para ocorrer a comunicação.
+\textbf{Remote Procedure Call (RPC)} 
+Se chama uma função remotamente em um servidor que precisa retornar
+    essa função para o chamador, é um processo bloqueante que precisa
+    do Endereço do servidor e os 2 lados precisam estar ativos durante
+    essa operação.
+
+\subsection{Desacoplamento de Tempo, Acoplamento de Espaço}
+\textbf{Serviço de E-Mail:} 
+O mandante da mensagem precisa saber o endereço de E-Mail do remetente mas os 2
+não precisam estar online quando a mensagem for enviada a um intermediario
+que armazena os E-Mails 
+\textit{Exemplos: Outlook e Gmail}
+
+
+\noindent \textbf{Serviço de Chat Ponto a Ponto} 
+O mandante da mensagem só precisa saber o usuário do remetente, mas não precisa os 2 ficarem
+online na mesma hora para o remetente receber a mensagem
+já que elas ficam armazenadas no servidor.
+
+\subsection{Acoplamento de Tempo, Desacoplamento de Espaço}
+\textbf{IRC (Internet Relay Chat)}
+O mandante da Mensagem precisa somente estar na mesma sala com o remetente mas
+os 2 precisam estar online ao mesmo tempo para receber a mensagem
+
+\noindent \textbf{Serviço de Reunião Online}
+Os integrantes precisam estar online em uma reunião ao mesmo tempo mas não precisam
+saber o endereço dos integrantes.
+\textit{Ex: Microsoft Teams e Google Meet}
+\subsection{Desacoplamento de Tempo, Desacoplamento de Espaço}
+
+\textbf{Espaço de Tuplas} Se tem uma área onde pode ser colocado Objetos Java onde
+integrantes podem ler e escrever sobre para recuperar o Objeto ou adicionar novos
+objetos. Não se tem necessidade de saber o endereço de quem esta manuseando os dados
+e os mesmos ficam salvos dentro do espaço. \textit{Ex: JavaSpaces}
+
+\noindent \textbf{PubSub}
+Se tem um servidor com tópicos onde se pode se inscrever e publicar, os produtores
+publicam alguma informação no tópico para quando o consumidor se inscrever neste
+tópico poder ler as informções publicadas, \textit{Ex: MQTT e RSS}
+
+\section{
+Escreva o que você entende pelo tipo de middleware e procure 3 players usados no mercado hoje em dia para cada um deles}
+
+\subsection{PubSub}
+Um broker recebe eventos de instrumentos externos para tópicos onde pode então
+notificar clientes assinantes ou armazenar para notificar futuros assinantes.
+\textit{Players: Google Cloud Pub/Sub, Kafka e RSS}
+
+\subsection{Message Queues}
+Um broker recebe mensagens para por em uma fila especifica onde produtores
+e consumidores interagem entre si.
+\textit{Players: RabbitMQ, ZeroMQ e Apache Qpid}
+
+\subsection{Distributed Shared Memory}
+Computadores em cluster que agem como uma unidade de memoria única para serem
+utilizados por processos.
+\textit{Players: Apache Ignite, Hazelcast e Infinispan}
+
+\subsection{Espaco de Tuplas}
+Um espaço onde clientes podem escrever Objetos Java sobre e Ler também
+\textit{Players: GigaSpaces e Apache River}
+
+\end{document}
+
