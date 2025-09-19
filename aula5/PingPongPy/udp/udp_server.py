@@ -35,9 +35,9 @@ def udp_server(host='localhost', port=8000):
 #use python3 udp_server.py $IP_ADDR $PORT
 
 def main():
-    
-    if argv != 3:
+
+    if len(argv) != 3:
         return
-    udp_server(UDP_PAYLOAD_MAX, host=argv[2], port=int(argv[3]))
+    udp_server(argv[1], int(argv[2]))
 
 main()
