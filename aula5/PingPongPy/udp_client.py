@@ -15,10 +15,9 @@ def udp_client(ip_port, pkt_size):
     
     chunks = list(separate_in_chunks(payload, PACKET_MAX))
 
-    after = None
-    before = time.time()
     for packet in chunks:
-
+        after = None
+        before = time.time()
         sock.sendto(packet, ip_port)
     
         try:
