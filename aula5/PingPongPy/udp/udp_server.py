@@ -1,8 +1,9 @@
 from socket import socket, AF_INET, SOCK_DGRAM
+from sys import argv
 
 UDP_PAYLOAD_MAX = 65507
 
-def udp_server(pkt_siz, host='localhost', port=8000):
+def udp_server(host='localhost', port=8000):
 
     sock = socket(
             AF_INET,
@@ -15,7 +16,7 @@ def udp_server(pkt_siz, host='localhost', port=8000):
     print(f'UDP Server listening on {host}:{port}')
     while True:
         try:
-            data, client_addr = sock.recvfrom(pkt_siz)
+            data, client_addr = sock.recvfrom(UDP_PAYLOAD_MAX)
 
             print(f"Received from {client_addr}: {len(data.decode())}")
 
@@ -31,8 +32,12 @@ def udp_server(pkt_siz, host='localhost', port=8000):
     
     sock.close()
 
+#use python3 udp_server.py $IP_ADDR $PORT
 
 def main():
-    udp_server(UDP_PAYLOAD_MAX)
+    
+    if argv != 3:
+        return
+    udp_server(UDP_PAYLOAD_MAX, host=argv[2], port=int(argv[3]))
 
 main()
