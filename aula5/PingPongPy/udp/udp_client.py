@@ -1,10 +1,5 @@
 import socket, sys, time
 
-PACKET_MAX = 65507
-
-def separate_in_chunks(lst, n):
-    for i in range(0, len(lst), n):
-        yield lst[i:i + n]
 
 def udp_client(ip_port, pkt_size):
     sock = socket.socket(
@@ -13,26 +8,23 @@ def udp_client(ip_port, pkt_size):
  
     payload = bytes(pkt_size)
     
-    chunks = list(separate_in_chunks(payload, PACKET_MAX))
+    after = None
+    before = time.time()
+    sock.sendto(payload, ip_port)
 
-    for packet in chunks:
-        after = None
-        before = time.time()
-        sock.sendto(packet, ip_port)
+    try:
+        data, server = sock.recvfrom(PACKET_MAX)
+        
+        after = time.time()
+
+        #print(f"data received from {server} : {len(data.decode())}")
+        
+    except sock.timeout:
+        print("socket reached timeout");
     
-        try:
-            data, server = sock.recvfrom(PACKET_MAX)
-            
-            after = time.time()
-
-            #print(f"data received from {server} : {len(data.decode())}")
-            
-        except sock.timeout:
-            print("socket reached timeout");
-        
-        delta_time = after - before
-        
-        print(f'{pkt_size}; {delta_time * 1000}; {len(packet)}; udp')
+    delta_time = after - before
+    
+    print(f'{pkt_size}; {delta_time * 1000}; {len(packet)}; udp')
 
 """
     command line arguments
