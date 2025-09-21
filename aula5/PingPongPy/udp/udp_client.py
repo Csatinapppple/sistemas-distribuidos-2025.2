@@ -1,5 +1,6 @@
 import socket, sys, time
 
+PACKET_MAX = 65507
 
 def udp_client(ip_port, pkt_size):
     sock = socket.socket(
