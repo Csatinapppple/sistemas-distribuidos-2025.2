@@ -1,4 +1,4 @@
-from socket import socket, AF_INET, SOCK_STREAM
+from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_SNDBUF, SO_RCVBUF
 from sys import argv
 
 DATA_MAX = 10485760
@@ -12,6 +12,8 @@ def tcp_server(host='localhost', port=8000):
                 AF_INET,
                 SOCK_STREAM)
         
+        sock.setsockopt(SOL_SOCKET, SO_SNDBUF, 1048576)  # 1MB send buffer
+        sock.setsockopt(SOL_SOCKET, SO_RCVBUF, 1048576)  # 1MB receive buffer
         server_address = (host, port)
 
         sock.bind(server_address)

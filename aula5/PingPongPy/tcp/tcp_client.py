@@ -7,11 +7,14 @@ def tcp_client(ip_port, pkt_size):
             socket.AF_INET,
             socket.SOCK_STREAM)
  
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 1048576)  # 1MB send buffer
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 1048576)  # 1MB receive buffer
+
     payload = bytes(pkt_size)
     
     after = None
     before = time.time()
-
+    sock.settimeout(60.0)
     try:
         
         sock.connect(ip_port)
@@ -24,8 +27,8 @@ def tcp_client(ip_port, pkt_size):
 
         #print(f"data received from {server} : {len(data.decode())}")
         
-    except Exception as e:
-        print("exception: {e}")
+    except sock.timeout:
+        print("exception: connection timeout")
     finally:
         sock.close()
 
