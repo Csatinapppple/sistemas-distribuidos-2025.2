@@ -1,0 +1,124 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}  
+
+     
+\sloppy
+
+\title{Exercício 3 Sistemas Distribuídos}
+
+\author{Christian Aguiar Plentz\inst{1}, João Roberto Lemos Fidellis\inst{2} }
+
+
+\address{Ciência da Computação -- Universidade do Vale do Rio dos Sinos (UNISINOS)\\
+  Caixa Postal 275 -- 93022-750 -- São Leopoldo -- RS -- Brazil
+  \email{\{plentzchristian,JRFIDELLIS\}@edu.unisinos.br}
+}
+
+
+\begin{document} 
+
+\maketitle
+
+\section{ Escreva um programa em Sockets Ping-Pong para medir o tempo
+    de comunicação entre 2 processos interligados por uma rede LAN.
+    não pode ser VM ou na mesma maquina}
+
+Use os protocolos UDP e TCP e teste com os seguintes tamanhos de mensagem
+\textbf{100B, 500B, 1KB, 100KB, 500KB, 1MB e 10MB}
+
+\subsection{UDP}
+    Os processos UDP conseguiram se comunicar ate os 1KB pois quando a mensagem
+    é maior que 65507 Bytes (Tamanho máximo de um payload UDP) o próprio SO retorna
+    uma mensagem de erro com o numero 90 nomeado \textit{EMSGSIZE} \\
+\textbf{Saída do terminal:} \\
+\indent \texttt{OSError: [Errno 90] Message too long}
+
+\noindent \textbf{Tempo da comunicação entre os 2 processos}
+
+\begin{center}
+\begin{tabular}{|l|l|}  % | for vertical lines
+\hline% Horizontal line
+Tamanho do Pacote & Tempo em Milisegundos \\
+\hline
+    100B & 1.66ms \\
+    500B & 1.40ms \\
+    1KB & 1.35ms \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{TCP}
+
+Os processos TCP conseguiram se comunicar ate os 1MB, ao tentar os 10MB sempre houve problema de
+timeout entre os pacotes. \\
+\textbf{Saída do Terminal:} \\
+\indent \texttt{TimeoutError: timed out}
+
+\noindent \textbf{Tempo da comunicação entre os 2 processos:} \\
+\begin{center}
+\begin{tabular}{|l|l|}  % | for vertical lines
+\hline% Horizontal line
+Tamanho do Pacote & Tempo em Milisegundos \\
+\hline
+100B & 1.77ms \\
+500B & 1.52ms \\
+1KB & 1.30ms \\
+100KB & 1.69ms \\
+500KB & 1.97ms \\
+1MB & 1.57ms \\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+
+\section{Usando o mesmo programa anterior, faca o gráfico de uso de largura de banda.
+    Explique o comportamento}
+
+
+\subsection{Gráfico UDP}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{exercicio3/grafico_udp.png}
+\end{figure}
+
+Devido a somente ter 3 resultados pelas limitações do tamanho de uma mensagem UDP
+não se consegue tirar muitas conclusões do gráfico além de que o UDP apresenta
+uma largura de banda linear ao tamanho do pacote contanto que ele esteja nos limites UDP
+
+\clearpage
+
+\subsection{Gráfico TCP}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{exercicio3/grafico_tcp.png}
+\end{figure}
+
+O grafico foi usado uma sequencia logaritimica para medir seu tamanho devido aos números muito
+altos que se teve no tamanho do pacote. mas mesmo o gráfico estando em sequencia logarítmica
+a largura de banda também apresenta uma progressão linear
+
+\end{document}
+
