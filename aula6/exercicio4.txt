@@ -1,0 +1,30 @@
+1)Descreva vantagems e desvantagems dos tres mecanismos de resolucao de nomes estudado
+	Navegacao Iterativa:
+		O cliente pede a um sistema de DNS se ele tem um nome a ser resolvido e se nao tiver
+		o servidor de DNS manda outro servidor de DNS para o cliente tentar, uma desvantagem
+		é que o cliente tem que fazer varias requisicoes sendo mais lento do lado dele
+		mas nao tem tanto esforco do lado dos servidores.
+	Navegacao Recursiva:
+		O cliente pede a um servidor DNS se ele tem um nome a ser resolvido e se nao tiver
+		o servidor pede para outro servidor que se nao tiver pede a outro servidor e a resposta
+		e passada de volta entre esses servidores, a vantagem é que o cliente so faz uma requisicao
+		em vez de fazer varias para outros servidores, dando assim qualidade de servico para o cliente
+	Navegacao Não-Recursiva:
+		O cliente pede a um servidor DNS se ele tem um nome e se nao tiver o servidor pede para
+		outros servidores resolverem o nome, o bom é que mantém somente uma requisição que o cliente
+		deve fazer mas devido a isso toda a carga deve ser posta em um unico servidor que procura
+		o nome pelos outros servidores.
+2)Explique um cenario onde o sistema DynDNS pode ser util
+	Em sistemas de vigilancia caseiro, pode ser que sua provedora te de um IP publico novo
+	entao o DynDNS serve para te dar um nome para resolver para seu IP publico novo automaticamente
+	para que nao precise por o IP publico para acessar seu sistema de vigilancia autonomo
+3)Na parte de sistema de arquivos, qual a importancia do VFS
+	Oferecer uma API para novos sistemas de arquivos poderem suportar para ter compatibilidade
+	com as livrarias de IO de um Sistema Operacional
+4)Ao analisar a ACL, qual o problema em termos um arquivo com permissao 777
+	se tiver 7 na parte do outros qualquer um pode ler e executar o arquivo gerando problemas
+	de seguranca no sistema um atacante nao precisa ter acesso root para acessar um arquivo
+	com permissão 7 na parte de outros.
+5) voce ve o sistema NFS como um RPC(Remote Procedure Call)? Explique.
+	Sim, para ter acesso ao Sistema de Arquivos atravez da rede é necessario
+	invocar funcoes VFS pela rede para leitura e escritura dos arquivos.

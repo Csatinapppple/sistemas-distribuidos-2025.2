@@ -1,0 +1,6 @@
+3) O que voce entende por "Happened Before" no contexto de Exclusao mutua distribuida
+	Se o algoritimo considera tudo que acontece antes para sua entrega de token.
+	Por exemplo, um algoritimo que possui "Happened Before" escolhe seu lider no quesito
+	de quem pediu essa permissao primeiro enquanto algoritimos que não possuem geralmente
+	tem alguma hierarquia para definir o lider de seu cluster para definir um lider.
+

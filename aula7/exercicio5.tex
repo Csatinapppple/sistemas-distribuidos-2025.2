@@ -1,0 +1,79 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}  
+
+     
+\sloppy
+
+\title{Exercício 5 Sistemas Distribuídos}
+
+\author{Christian Aguiar Plentz\inst{1}, João Roberto Lemos Fidellis\inst{2} }
+
+
+\address{Ciência da Computação -- Universidade do Vale do Rio dos Sinos (UNISINOS)\\
+  Caixa Postal 275 -- 93022-750 -- São Leopoldo -- RS -- Brazil
+  \email{\{plentzchristian,JRFIDELLIS\}@edu.unisinos.br}
+}
+
+
+\begin{document} 
+
+\maketitle
+
+ \section{Escreva o passo a passo Alice-Bob para implementarmos o seguinte statement}
+	\textit{Bob gostaria de enviar um documento assinado e com criptografia assimetrica para alice}
+
+\subsection{Bob}
+
+\texttt{
+\noindent Recebe PubA de Alice \\
+Cria as chaves: PubB e PrivB \\
+Passa PubB para Alice \\
+HASH = hash(sha1, documento()) \\
+SIGN = sign(PrivB, HASH, sha1) \\
+MSG = append(documento(), SIGN) \\
+FINAL = cript(rsa, PubA, MSG) \\
+send(alice, FINAL) \\
+}
+
+\subsection{Alice}
+\texttt{
+\noindent Cria as chaves: PubA e PrivA \\
+Passa PubA para Bob \\
+Recebe PubB de Bob \\
+Recebe FINAL \\
+READ = decrypt(rsa, PrivA, FINAL) \\
+if (READ == NULL) \\
+\indent PROBLEMA \\
+else \\
+\indent SIGN = pega\_final(READ) \\
+\indent BODY = pega\_corpo(READ) \\
+\indent HASH = hash(sha1, BODY) \\
+\indent RESULT = verify(PubB, HASH, SIGN, sha1) \\
+\indent if RESULT \\
+\indent \indent PASS \\
+\indent else \\
+\indent	\indent PROBLEMA \\
+}
+
+\end{document}
+
