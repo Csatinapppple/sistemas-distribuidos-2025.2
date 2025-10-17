@@ -1,3 +1,11 @@
+1)
+	De 3 exemplos de aplicacoes distribuidas onde o tratamento da exclusao mutua distribuida
+	faz sentido. E outros 3 exemplos na escolha de lider em sistemas distribuidos.
+
+2)
+	Faca um quadro onde comentas sobre os algoritimos de exclusao mutua frente a dos aspectos:
+	justica e consumo de banda larga
+
 3) O que voce entende por "Happened Before" no contexto de Exclusao mutua distribuida
 	Se o algoritimo considera tudo que acontece antes para sua entrega de token.
 	Por exemplo, um algoritimo que possui "Happened Before" escolhe seu lider no quesito
