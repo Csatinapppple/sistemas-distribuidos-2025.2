@@ -1,0 +1,3 @@
+Em grupos, entrega até a prova do GB. 
+
+Faça um relatório sobre o uso de um Middleware para lidar com Web Services, trabalhando questões de como gerar aplicações cliente a partir do WSDL do servidor, facilidades de uso, abstraçòes par aos usuários, dificuldades encontradas, linguagem de programação. Tamanho do relatório = até uma página. 

@@ -1,0 +1,11 @@
+1)
+Desvendando o site https://top500.org
+entre no site, gere os graficos e escreva um minirelatorio sobre:
+	- arquitetura de maquina
+	- finalidade e paises
+	- numero de nos e numero de cores por processador
+	- sistema operacional
+	- rede de interconexao
+	- aceleradores, coprocessadores e GPU
+
+
