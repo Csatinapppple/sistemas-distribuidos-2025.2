@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}  
+
+     
+\sloppy
+
+\title{Exercício 4 do Grau B Sistemas Distribuidos}
+
+\author{João Roberto Lemos Fidellis\inst{1}, Christian Aguiar Plentz\inst{2}, 
+Julian Rafael de Souza\inst{3}}
+
+
+\address{Ciência da Computação - Universidade do Vale do Rio dos Sinos (UNISINOS)\\
+  Caixa Postal 275 -- 93.022-750 -- São Leopoldo -- RS -- Brazil
+\email{\{plentzchristian, jrfidellis, julian93\}@edu.unisinos.br}
+}
+
+\begin{document} 
+
+\maketitle
+
+\section{Apache CXF para Web Services}
+
+O Apache CXF é um framework escrito em Java para criação e consumo de Web Services baseado em SOAP e REST. Possui a abordagem Code-First para implementação o Desenvolvedor precisa anotar suas Funções desejadas com a anotação \textit{@WebService} e \textit{@WebMethod} vide o exemplo abaixo.
+
+\begin{verbatim}
+import jakarta.jws.WebService;
+import jakarta.jws.WebMethod;
+
+@WebService
+public class CalculadoraService {
+	@WebMethod
+	public int somar(int a, int b){
+		return a + b;
+	}
+}
+\end{verbatim}
+
+Para criar o wsdl dessa classe basta usar o  \\ 
+\texttt{Endpoint.publish(ENDERECO\_E\_PORTA, New CalculadoraService())} 
+durante seu fluxo de execucao para criar um servidor de wsdl, 
+se quiser pode se testar o servidor para ver se está dando retorno com \\
+\texttt{curl -v "http://localhost:8080/calculadora?wsdl"}
+
+Para poder gerar o código para implementar o cliente, se pode gerar o código automaticamente
+com o programa wsdl2java vide o exemplo abaixo. \\
+\texttt{wsdl2java -d . -p client.wsdl \$ENDERECO\_E\_PORTA }
+
+Com isso vai se gerar vários arquivos java relacionados a classe
+CalculadoraService para o desenvolvedor poder implementar.
+
+\begin{verbatim}
+ $ ls client/wsdl 
+CalculadoraService.java         ObjectFactory.java  Somar.java
+CalculadoraServiceService.java  package-info.java   SomarResponse.java
+\end{verbatim}
+
+Exemplo de uso dentro do cliente:
+
+\begin{verbatim}
+import client.wsdl.CalculadoraServiceService;
+import client.wsdl.CalculadoraService;
+
+public class Client {
+	public static void main(String[] args) {
+
+		try {
+			var service = new CalculadoraServiceService();
+			var port = service.getCalculadoraServicePort();
+
+			int resultado = port.somar(15, 20);
+
+			System.out.printf("resultado da chamada de somar(15, 20) no Servidor %d", resultado);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+\end{verbatim}
+
+\end{document}
+
