@@ -18,7 +18,21 @@
     </properties>
     
     <dependencies>
-        <!-- Apache CXF Dependencies -->
+        <!-- JAXB API (required for XML binding in Java 11+) -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        
+        <!-- JAXB Runtime Implementation -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        
+        <!-- Apache CXF -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -31,13 +45,6 @@
             <version>${cxf.version}</version>
         </dependency>
         
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-features-logging</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        
-        <!-- For Jetty HTTP server -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http-jetty</artifactId>
@@ -55,21 +62,12 @@
                     <source>11</source>
                     <target>11</target>
                 </configuration>
+							</plugin>
+							<plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
             </plugin>
-        <plugin>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-codegen-plugin</artifactId>
-            <version>${cxf.version}</version>
-            <configuration>
-                <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
-                <wsdlOptions>
-                    <wsdlOption>
-                        <wsdl>http://localhost:8080/calculadora?wsdl</wsdl>
-                        <packagename>server</packagename>
-                    </wsdlOption>
-                </wsdlOptions>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+        </plugins>
+    </build>
 </project>
