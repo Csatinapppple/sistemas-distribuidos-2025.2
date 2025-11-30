@@ -1,0 +1,134 @@
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.dashboard-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.logout-button {
+  padding: 10px 25px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+.info-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.info-card h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 22px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: #666;
+  font-weight: 600;
+}
+
+.info-value {
+  color: #333;
+}
+
+.info-value.code {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  background-color: #f5f5f5;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.redis-card {
+  border-left: 4px solid #dc382d;
+}
+
+.redis-explanation {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #667eea;
+}
+
+.redis-explanation p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.benefits-card {
+  border-left: 4px solid #28a745;
+}
+
+.benefits-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.benefits-list li {
+  margin-bottom: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.benefits-list li:last-child {
+  margin-bottom: 0;
+}
+
+.benefits-list strong {
+  color: #333;
+}
+
+.error {
+  color: #dc3545;
+  font-style: italic;
+}
