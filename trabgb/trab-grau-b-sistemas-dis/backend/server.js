@@ -10,7 +10,7 @@ const PORT = 3001
 
 // Redis client setup
 const redisClient = createClient({
-  url: 'redis://localhost:6379',
+  url: 'redis://:your-strong-dev-pass@localhost:6379',
 })
 
 redisClient.connect().catch(console.error)

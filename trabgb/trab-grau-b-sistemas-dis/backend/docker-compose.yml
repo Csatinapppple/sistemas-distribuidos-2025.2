@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7-alpine
+    command:
+      - redis-server
+      - --bind
+      - 0.0.0.0
+      - --requirepass
+      - "your-strong-dev-pass"
+      - --protected-mode
+      - "yes"
+    ports:
+      - "127.0.0.1:6379:6379"

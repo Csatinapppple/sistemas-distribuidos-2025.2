@@ -89,3 +89,7 @@ nb-configuration.xml
 ## Miscellaneous
 ##############################
 *.log
+
+# Node
+package-lock.json
+node_modules/
