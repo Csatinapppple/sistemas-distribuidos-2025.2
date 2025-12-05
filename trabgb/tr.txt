@@ -1,0 +1,2 @@
+IMplementacao baseado em REDIS
+mostrar: Estrategia, Arquitetura, metodologia de testes (prototipos) infraestrutura e cenarios no modelo SBC em latex
